@@ -26,8 +26,6 @@ router.post('/reviews/:courtId', requireToken, (req, res, next) => {
 		// respond to succesful `create` with status 201 and JSON of new "court"
 		.then((court) => {
 			court.review.push(review)
-			court.review.push(rating)
-			
 			console.log ('this review is being posted', review)
             res.status(201).json({ court: court.toObject() })
             return court.save()
